@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Db\Database;
-
+use PDO;
 class Vaga{
     // identificador unico da vaga @var integer
     public $id;
@@ -38,7 +38,11 @@ class Vaga{
 
 
             return true; //retornar sucesso
-
-
+    }
+    
+    public static function getVagas($where = null, $order = null, $limit = null) //@param string @param string @param string @return array método responsável por obter vagas do banco de dados
+    {
+        return (new Database('vagas'))->select($where,$order,$limit)
+                                            ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
 }

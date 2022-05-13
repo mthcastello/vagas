@@ -61,5 +61,16 @@ class Database
         return $this->connection->lastInsertId(); // retorna o Id inserido
 
     }
+
+    public function select($where = null, $order = null, $limit = null, $fields = '*'){ // @param string @param string @param string @return PDOStatement - método responsável por executar uma consulta no banco
+        $where = strlen($where) ? 'WHERE '.$where : '';
+        $order = strlen($order) ? 'ORDER BY '.$order : '';
+        $limit = strlen($limit) ? 'LIMIT '.$where : '';
+
+
+        $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$order.' '.$limit;//monta a QUERY
+
+        return $this->execute($query);
+    }
 }
 
