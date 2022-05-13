@@ -34,10 +34,19 @@ class Database
         {
             die('ERROR: '.$e->getMessage());
         }
-
-
     }
 
+    public function execute($query,$params = []) //@param string @param array @return PDOStatement método responsavel por executar querys no banco de dados
+    {
+        try{
+            $statement = $this->connection->prepare($query); //vai receber a instanca de PDOstatement, assim chamando connection e o metodo dentro prepare ( onde passa a $query e ele verifica qual binds ele deve substituir
+            $statement->execute($params);
+            return $statement;
+        }catch(PDOException $e)
+        {
+            die('ERROR: '.$e->getMessage());
+        }
+    }
 
     public function insert($values){ //@param array @return interger metodo responsavel  por inserir dados no bando
 
@@ -45,8 +54,12 @@ class Database
         $binds = array_pad([],count($fields),'?'); // pega array e confere se tem 'n' posiçoes, se essas posições estiverem vazias completa com o padrão escolhido
 
         $query = 'INSERT INTO '.$this->table.' ('.implode(',', $fields).') VALUES ('.implode(',',$binds).')'; //monta a query
-        echo $query;
-        exit;
+
+
+        $this->execute($query,array_values($values)); // executa o INSERT
+
+        return $this->connection->lastInsertId(); // retorna o Id inserido
+
     }
 }
 
