@@ -1,7 +1,7 @@
 <?php
 namespace App\Db;
 use PDO; // chamar o PDO para uso
-
+use PDOException; // chamar o PDOException
 class Database
 { // Criar a classe
 
@@ -38,5 +38,15 @@ class Database
 
     }
 
+
+    public function insert($values){ //@param array @return interger metodo responsavel  por inserir dados no bando
+
+        $fields= array_keys($values); // dados da query
+        $binds = array_pad([],count($fields),'?'); // pega array e confere se tem 'n' posiçoes, se essas posições estiverem vazias completa com o padrão escolhido
+
+        $query = 'INSERT INTO '.$this->table.' ('.implode(',', $fields).') VALUES ('.implode(',',$binds).')'; //monta a query
+        echo $query;
+        exit;
+    }
 }
 
