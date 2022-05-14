@@ -1,3 +1,11 @@
+<main>
+<section>
+    <a href="index.php">
+        <button class="btn btn-succes">Voltar</button>
+    </a>
+
+</section>
+    <h2 class="mt-3"><?=TITLE?></h2>
 <form method="post">
 
     <div class="form-group">
@@ -33,3 +41,4 @@
     </div>
 
 </form>
+</main>

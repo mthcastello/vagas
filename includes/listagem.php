@@ -3,21 +3,21 @@
 
 
 $resultados = '';
-foreach($vagas as $vaga){ // cada posição de vagas vai ser transformado na variavel vaga
+foreach($vagas as $vaga){
     $resultados .= '<tr>
-                    <td>'.$vaga->id.'</td>
-                    <td>'.$vaga->titulo.'</td>
-                    <td>'.$vaga->descricao.'</td>
-                    <td>'.($vaga->ativo == 's' ? 'Ativo' : 'Inativo').'</td>
-                    <td>'.date('d/m/Y à\s H:i:s',strtotime($vaga->data)).'</td>
-                    <td>
-                        <a href="editar.php?id='.$vaga->id.' ">
-                        <button type="button" class="btn btn-primary">Editar</button>
+                      <td>'.$vaga->id.'</td>
+                      <td>'.$vaga->titulo.'</td>
+                      <td>'.$vaga->descricao.'</td>
+                      <td>'.($vaga->ativo == 's' ? 'Ativo' : 'Inativo').'</td>
+                      <td>'.date('d/m/Y à\s H:i:s',strtotime($vaga->data)).'</td>
+                      <td>
+                        <a href="editar.php?id='.$vaga->id.'">
+                          <button type="button" class="btn btn-primary">Editar</button>
                         </a>
-                        <a href="excluir.php?id='.$vaga->id.' ">
-                        <button type="button" class="btn btn-danger">Excluir</button>
+                        <a href="excluir.php?id='.$vaga->id.'">
+                          <button type="button" class="btn btn-danger">Excluir</button>
                         </a>
-                        </td>
+                      </td>
                     </tr>';
 }
 
