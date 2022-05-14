@@ -72,5 +72,30 @@ class Database
 
         return $this->execute($query);
     }
+    public function update($where,$values){
+        //DADOS DA QUERY
+        $fields = array_keys($values);
+
+        //MONTA A QUERY
+        $query = 'UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
+
+        //EXECUTAR A QUERY
+        $this->execute($query,array_values($values));
+
+        //RETORNA SUCESSO
+        return true;
+    }
+
+    public function delete($where){
+        //MONTA A QUERY
+        $query = 'DELETE FROM '.$this->table.' WHERE '.$where;
+
+        //EXECUTA A QUERY
+        $this->execute($query);
+
+        //RETORNA SUCESSO
+        return true;
+    }
+
 }
 

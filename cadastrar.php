@@ -7,11 +7,11 @@ require __DIR__.'/vendor/autoload.php';
 use App\Entity\Vaga;
 
 define('TITLE','Cadastrar Vaga');
-
+$obVaga = new Vaga;
 //validação do post
 if(isset($_POST['titulo'],$_POST['descricao'],$_POST['ativo'])) {
 
-    $obVaga = new Vaga;
+
     $obVaga->titulo = $_POST['titulo'];
     $obVaga->descricao = $_POST['descricao'];
     $obVaga->ativo = $_POST['ativo'];

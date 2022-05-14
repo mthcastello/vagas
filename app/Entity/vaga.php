@@ -48,6 +48,12 @@ class Vaga{
             'data'      => $this->data
         ]);
     }
+
+    public function excluir(){
+        return (new Database('vagas'))->delete('id = '.$this->id);
+    }
+
+
     public static function getVagas($where = null, $order = null, $limit = null) //@param string @param string @param string @return array método responsável por obter vagas do banco de dados
     {
         return (new Database('vagas'))->select($where,$order,$limit)

@@ -10,12 +10,12 @@
 
     <div class="form-group">
         <label>Título</label>
-        <input type="text" class="form-control" name="titulo"> <!-- campo de texto comum -->
+        <input type="text" class="form-control" name="titulo" value="<?=$obVaga->titulo?>"> <!-- campo de texto comum -->
     </div>
 
     <div class="form-group">
         <label>Descrição</label>
-        <textarea class="form-control" name="descricao" rows="5"></textarea>
+        <textarea class="form-control" name="descricao" rows="5"><?=$obVaga->descricao?></textarea>
     </div>
 
     <div class="form-group">      <!-- criação do hardbutton para ativo ou inativo-->
@@ -29,7 +29,7 @@
 
             <div class="form-check form-check-inline">
                 <label>
-                    <input type="radio" name="ativo" value="n">Inativo
+                    <input type="radio" name="ativo" value="n" <?=$obVaga->ativo == 'n' ? 'checked' : ''?> >Inativo
                 </label>
             </div>
 
